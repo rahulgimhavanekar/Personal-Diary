@@ -16,11 +16,11 @@ const Event = (props) => {
   return (
     <section className={classes.event}>
       <h2 className={classes.title}>{props.title}</h2>
-      <h5 className={classes.date}>{props.date}</h5>
-      <h5 className={classes.description}>{`${props.description.slice(
+      <h4 className={classes.date}>{props.date}</h4>
+      <h4 className={classes.description}>{`${props.description.slice(
         0,
         50
-      )}...`}</h5>
+      )}...`}</h4>
       <div className={classes.actions}>
         <Link to={`/events/${props.id}`}>Read More</Link>
         <button className={classes.update}>Update</button>

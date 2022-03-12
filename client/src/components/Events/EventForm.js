@@ -46,7 +46,7 @@ const EventForm = () => {
           <label htmlFor="description">Description</label>
           <textarea
             id="description"
-            rows="8"
+            rows="10"
             value={description}
             onChange={(e) => {
               setDescription(e.target.value);

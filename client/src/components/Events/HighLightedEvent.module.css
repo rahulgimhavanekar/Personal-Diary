@@ -1,0 +1,20 @@
+.event_detail {
+  width: 70%;
+  padding-top: 2rem;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+.date {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}

@@ -10,12 +10,12 @@ const getEvents = async (req, res) => {
         message: "No events Found",
       });
     }
-    res.json({
+    res.status(200).json({
       success: true,
       data: events,
     });
   } catch (error) {
-    res.send({
+    res.status(500).json({
       success: false,
       message: error.message,
     });
@@ -26,12 +26,12 @@ const createEvent = async (req, res) => {
   const event = new Event(req.body);
   try {
     await event.save();
-    res.status(200).json({
+    res.status(201).json({
       success: true,
       data: event,
     });
   } catch (error) {
-    res.json({
+    res.status(500).json({
       success: false,
       message: error.message,
     });
@@ -43,17 +43,17 @@ const getEventById = async (req, res) => {
     const event = await Event.findById(req.params.id);
 
     if (!event) {
-      res.status(404).json({
+      return res.status(404).json({
         success: false,
         message: "No event found",
       });
     }
-    res.json({
+    res.status(200).json({
       success: true,
       data: event,
     });
   } catch (error) {
-    res.json({
+    res.status(500).json({
       success: false,
       message: error.message,
     });
@@ -66,7 +66,7 @@ const updateEvent = async (req, res) => {
     const event = await Event.findById(req.params.id);
 
     if (!event) {
-      res.status(404).json({
+      return res.status(404).json({
         success: false,
         message: "No event found",
       });
@@ -74,12 +74,12 @@ const updateEvent = async (req, res) => {
 
     updates.forEach((update) => (event[update] = req.body[update]));
     await event.save();
-    res.json({
+    res.status(200).json({
       sucess: true,
       data: event,
     });
   } catch (error) {
-    res.json({
+    res.status(500).json({
       success: false,
       message: error.message,
     });
@@ -90,12 +90,12 @@ const deleteEvent = async (req, res) => {
   try {
     const event = await Event.findByIdAndDelete(req.params.id);
 
-    res.json({
+    res.status(200).json({
       sucess: true,
       data: event,
     });
   } catch (error) {
-    res.json({
+    res.status(500).json({
       success: false,
       message: error.message,
     });
