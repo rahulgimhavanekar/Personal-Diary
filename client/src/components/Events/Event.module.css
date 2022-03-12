@@ -1,0 +1,36 @@
+.event {
+  background-color: #c1d1d1;
+  margin: 16px 0;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.title,
+.date,
+.description {
+  padding: 4px;
+}
+
+.actions {
+  margin: 8px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.actions button {
+  background-color: #393e46;
+  color: #eeeeee;
+  font: inherit;
+  font-size: 1rem;
+  padding: 8px 24px;
+  margin-left: 8px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
