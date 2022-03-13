@@ -10,6 +10,9 @@
 .description {
   padding: 8px;
 }
+.date {
+  font-weight: bold;
+}
 
 .actions {
   margin: 8px;

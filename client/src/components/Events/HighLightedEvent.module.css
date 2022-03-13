@@ -18,3 +18,27 @@
   margin-bottom: 1rem;
   font-size: 1.25rem;
 }
+
+.actions {
+  margin: 16px 8px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.actions button {
+  background-color: #393e46;
+  color: #eeeeee;
+  font: inherit;
+  font-size: 1rem;
+  padding: 8px 24px;
+  margin-left: 8px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}

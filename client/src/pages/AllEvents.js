@@ -10,7 +10,7 @@ const AllEvents = () => {
 
   useEffect(() => {
     dispatch(getEvents());
-  }, [dispatch, events]);
+  }, [dispatch]);
 
   if (!events.length) {
     return <NoEventFound />;

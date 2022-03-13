@@ -1,32 +1,27 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { deleteEvent } from "../../actions/eventActions";
+import { useHistory } from "react-router-dom";
 import classes from "./Event.module.css";
+import convertDate from "../../utils/convertDate";
 
 const Event = (props) => {
-  const dispatch = useDispatch();
   const history = useHistory();
 
-  const deleteEventHandler = () => {
-    dispatch(deleteEvent(props.id));
-    history.push("/events");
+  const detailsHandler = () => {
+    history.push(`/events/${props.id}`);
   };
+
+  const myDate = convertDate(props.date);
 
   return (
     <section className={classes.event}>
       <h2 className={classes.title}>{props.title}</h2>
-      <h4 className={classes.date}>{props.date}</h4>
-      <h4 className={classes.description}>{`${props.description.slice(
+      <p className={classes.date}>{myDate}</p>
+      <p className={classes.description}>{`${props.description.slice(
         0,
         50
-      )}...`}</h4>
+      )}...`}</p>
       <div className={classes.actions}>
-        <Link to={`/events/${props.id}`}>Read More</Link>
-        <button className={classes.update}>Update</button>
-        <button className={classes.delete} onClick={deleteEventHandler}>
-          Delete
-        </button>
+        <button onClick={detailsHandler}>Read More</button>
       </div>
     </section>
   );

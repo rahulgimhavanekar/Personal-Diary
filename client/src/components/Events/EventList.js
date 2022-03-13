@@ -3,8 +3,6 @@ import Event from "./Event";
 import classes from "./EventList.module.css";
 
 const EventList = (props) => {
-  console.log(props.events);
-
   return (
     <div className={classes.list}>
       {props.events.map((event) => {
