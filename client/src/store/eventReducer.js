@@ -1,5 +1,6 @@
 import {
   FETCH_ALL,
+  FETCH_SINGLE_EVENT,
   CREATE_EVENT,
   UPDATE_EVENT,
   DELETE_EVENT,
@@ -9,6 +10,7 @@ import {
 
 const intialState = {
   events: [],
+  event: {},
   totalEvents: 0,
   loading: false,
   error: null,
@@ -23,6 +25,11 @@ const eventReducer = (state = intialState, action) => {
         totalEvents: action.payload.length,
         loading: false,
         error: null,
+      };
+    case FETCH_SINGLE_EVENT:
+      return {
+        ...state,
+        event: action.payload,
       };
     case CREATE_EVENT:
       return {

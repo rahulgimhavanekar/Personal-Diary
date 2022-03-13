@@ -5,6 +5,7 @@ import AllEvents from "./pages/AllEvents";
 import NewEvent from "./pages/NewEvent";
 import EventDetail from "./pages/EventDetail";
 import NotFound from "./pages/NotFound";
+import EventEdit from "./components/Events/EventEdit";
 
 function App() {
   return (
@@ -17,8 +18,11 @@ function App() {
           <Route path="/events" exact>
             <AllEvents />
           </Route>
-          <Route path="/events/:eventId">
+          <Route path="/events/:eventId" exact>
             <EventDetail />
+          </Route>
+          <Route path="/events/:eventId/edit">
+            <EventEdit />
           </Route>
           <Route path="/new-event">
             <NewEvent />

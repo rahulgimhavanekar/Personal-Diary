@@ -26,6 +26,11 @@
   align-items: center;
 }
 
+.actions button a {
+  text-decoration: none;
+  color: #eeeeee;
+}
+
 .actions button {
   background-color: #393e46;
   color: #eeeeee;

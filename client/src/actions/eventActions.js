@@ -2,10 +2,11 @@ import axios from "axios";
 import {
   FETCH_ALL,
   CREATE_EVENT,
-  //   UPDATE_EVENT,
+  UPDATE_EVENT,
   DELETE_EVENT,
   LOADING,
   ERROR,
+  FETCH_SINGLE_EVENT,
 } from "../actions/eventActionTypes";
 
 export const getEvents = () => {
@@ -48,16 +49,31 @@ export const deleteEvent = (id) => {
   };
 };
 
-// export const getSingleEvent = (id) => {
-//   return async () => {
-//     try {
-//       const response = await axios.get(
-//         `http://localhost:5000/api/events/${id}`
-//       );
-//       const event = response.data.data;
-//       return event;
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-// };
+export const updateEvent = (id, newEvent) => {
+  return async (dispatch) => {
+    try {
+      const response = axios.patch(
+        `http://localhost:5000/api/events/${id}/edit`,
+        newEvent
+      );
+      const data = response.data.data;
+      dispatch({ type: UPDATE_EVENT, payload: data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getSingleEvent = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/events/${id}`
+      );
+      const event = response.data.data;
+      dispatch({ type: FETCH_SINGLE_EVENT, payload: event });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

@@ -1,35 +1,22 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useParams, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { deleteEvent } from "../../actions/eventActions";
+import React, { useEffect } from "react";
+import { useParams, useHistory, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteEvent, getSingleEvent } from "../../actions/eventActions";
 import convertDate from "../../utils/convertDate";
 import classes from "./HighLightedEvent.module.css";
 
 const HighLightedEvent = () => {
-  const [event, setEvent] = useState({});
   const dispatch = useDispatch();
   const params = useParams();
   const history = useHistory();
+  const event = useSelector((state) => state.event);
 
   useEffect(() => {
-    const getSingleEvent = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:5000/api/events/${params.eventId}`
-        );
-        const data = response.data.data;
-        setEvent(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getSingleEvent();
-  }, [params.eventId]);
+    dispatch(getSingleEvent(params.eventId));
+  }, [dispatch, params.eventId]);
 
   const deleteEventHandler = () => {
-    dispatch(deleteEvent(params.eventId));
+    dispatch(deleteEvent(event._id));
     history.push("/events");
   };
 
@@ -41,10 +28,10 @@ const HighLightedEvent = () => {
       <h4 className={classes.date}>{myDate}</h4>
       <p className={classes.description}>{event.description}</p>
       <div className={classes.actions}>
-        <button className={classes.update}>Update</button>
-        <button className={classes.delete} onClick={deleteEventHandler}>
-          Delete
+        <button>
+          <Link to={`/events/${event._id}/edit`}>Edit</Link>
         </button>
+        <button onClick={deleteEventHandler}>Delete</button>
       </div>
     </div>
   );
