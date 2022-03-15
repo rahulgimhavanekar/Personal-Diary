@@ -14,6 +14,6 @@ const eventSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-const Event = mongoose.model("events", eventSchema);
+const Event = mongoose.model("Event", eventSchema);
 
 module.exports = Event;

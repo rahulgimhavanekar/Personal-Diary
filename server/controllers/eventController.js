@@ -6,18 +6,15 @@ const getEvents = async (req, res) => {
 
     if (!events.length) {
       return res.status(404).json({
-        success: false,
         message: "No events Found",
       });
     }
     res.status(200).json({
-      success: true,
       data: events,
     });
   } catch (error) {
     res.status(500).json({
-      success: false,
-      message: error.message,
+      message: "Something went wrong Please try again later!",
     });
   }
 };
@@ -27,13 +24,11 @@ const createEvent = async (req, res) => {
   try {
     await event.save();
     res.status(201).json({
-      success: true,
       data: event,
     });
   } catch (error) {
     res.status(500).json({
-      success: false,
-      message: error.message,
+      message: "Something went wrong Please try again later!",
     });
   }
 };
@@ -44,18 +39,15 @@ const getEventById = async (req, res) => {
 
     if (!event) {
       return res.status(404).json({
-        success: false,
         message: "No event found",
       });
     }
     res.status(200).json({
-      success: true,
       data: event,
     });
   } catch (error) {
     res.status(500).json({
-      success: false,
-      message: error.message,
+      message: "Something went wrong Please try again later!",
     });
   }
 };
@@ -67,7 +59,6 @@ const updateEvent = async (req, res) => {
 
     if (!event) {
       return res.status(404).json({
-        success: false,
         message: "No event found",
       });
     }
@@ -75,13 +66,11 @@ const updateEvent = async (req, res) => {
     updates.forEach((update) => (event[update] = req.body[update]));
     await event.save();
     res.status(200).json({
-      sucess: true,
       data: event,
     });
   } catch (error) {
     res.status(500).json({
-      success: false,
-      message: error.message,
+      message: "Something went wrong Please try again later!",
     });
   }
 };
@@ -91,13 +80,11 @@ const deleteEvent = async (req, res) => {
     const event = await Event.findByIdAndDelete(req.params.id);
 
     res.status(200).json({
-      sucess: true,
       data: event,
     });
   } catch (error) {
     res.status(500).json({
-      success: false,
-      message: error.message,
+      message: "Something went wrong Please try again later!",
     });
   }
 };
