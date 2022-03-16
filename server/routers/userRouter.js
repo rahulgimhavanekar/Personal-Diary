@@ -10,8 +10,8 @@ const {
   logout,
 } = require("../controllers/userController");
 
-router.post("/users/signup", signUp);
-router.post("/users/login", login);
+router.post("/signup", signUp);
+router.post("/login", login);
 router.post("/users/logout", auth, logout);
 router.get("/users/me", auth, getProfile);
 router.patch("/users/me/edit", auth, updateUser);

@@ -5,7 +5,7 @@ import { updateEvent } from "../../actions/eventActions";
 import classes from "./EventForm.module.css";
 
 const EventEdit = () => {
-  const event = useSelector((state) => state.event);
+  const event = useSelector((state) => state.event.event);
   const [title, setTitle] = useState(event.title);
   const [description, setDescription] = useState(event.description);
   const [isEnteringForm, setIsEnteringForm] = useState(false);

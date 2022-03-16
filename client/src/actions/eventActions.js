@@ -7,7 +7,7 @@ import {
   LOADING,
   ERROR,
   FETCH_SINGLE_EVENT,
-} from "../actions/eventActionTypes";
+} from "./actionTypes";
 
 export const getEvents = () => {
   return async (dispatch) => {
@@ -17,7 +17,6 @@ export const getEvents = () => {
       const data = response.data.data;
       dispatch({ type: FETCH_ALL, payload: data });
     } catch (error) {
-      console.log(error);
       dispatch({ type: ERROR, payload: error.message });
     }
   };
@@ -33,7 +32,7 @@ export const createEvent = (event) => {
       const data = response.data.data;
       dispatch({ type: CREATE_EVENT, payload: data });
     } catch (error) {
-      console.log(error);
+      dispatch({ type: ERROR, payload: error.message });
     }
   };
 };
@@ -44,7 +43,7 @@ export const deleteEvent = (id) => {
       await axios.delete(`http://localhost:5000/api/events/${id}`);
       dispatch({ type: DELETE_EVENT, payload: id });
     } catch (error) {
-      console.log(error);
+      dispatch({ type: ERROR, payload: error.message });
     }
   };
 };
@@ -59,7 +58,7 @@ export const updateEvent = (id, newEvent) => {
       const data = response.data.data;
       dispatch({ type: UPDATE_EVENT, payload: data });
     } catch (error) {
-      console.log(error);
+      dispatch({ type: ERROR, payload: error.message });
     }
   };
 };
@@ -73,7 +72,7 @@ export const getSingleEvent = (id) => {
       const event = response.data.data;
       dispatch({ type: FETCH_SINGLE_EVENT, payload: event });
     } catch (error) {
-      console.log(error);
+      dispatch({ type: ERROR, payload: error.message });
     }
   };
 };

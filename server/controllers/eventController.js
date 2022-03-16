@@ -72,7 +72,6 @@ const updateEvent = async (req, res) => {
         message: "No event found",
       });
     }
-
     updates.forEach((update) => (event[update] = req.body[update]));
     await event.save();
     res.status(200).json({
@@ -82,7 +81,6 @@ const updateEvent = async (req, res) => {
     res.status(500).json({
       message: "Something went wrong Please try again later!",
     });
-    console.log(error);
   }
 };
 
@@ -90,7 +88,10 @@ const deleteEvent = async (req, res) => {
   const id = req.params.id;
 
   try {
-    const event = Event.findOneAndDelete({ _id: id, owner: req.user._id });
+    const event = await Event.findOneAndDelete({
+      _id: id,
+      owner: req.user._id,
+    });
 
     if (!event) {
       return res.status(404).json({
@@ -105,6 +106,7 @@ const deleteEvent = async (req, res) => {
     res.status(500).json({
       message: "Something went wrong Please try again later!",
     });
+    console.log(error);
   }
 };
 

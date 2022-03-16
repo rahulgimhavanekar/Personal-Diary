@@ -9,39 +9,30 @@ import EventEdit from "./components/Events/EventEdit";
 import Signup from "./pages/Auth/Signup";
 import Login from "./pages/Auth/Login";
 import Profile from "./pages/Auth/Profile";
+import { useSelector } from "react-redux";
 
 function App() {
+  const loggedIn = useSelector((state) => state.auth.loggedIn);
+
   return (
     <Fragment>
       <Layout>
         <Switch>
-          <Route path="/" exact>
-            <Redirect to="/events" />
-          </Route>
-          <Route path="/signup">
-            <Signup />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/events" exact>
-            <AllEvents />
-          </Route>
-          <Route path="/events/:eventId" exact>
-            <EventDetail />
-          </Route>
-          <Route path="/events/:eventId/edit">
-            <EventEdit />
-          </Route>
-          <Route path="/new-event">
-            <NewEvent />
-          </Route>
-          <Route path="/profile">
-            <Profile />
-          </Route>
-          <Route path="*">
-            <NotFound />
-          </Route>
+          <Route
+            path="/"
+            exact
+            component={() =>
+              !loggedIn ? <Redirect to="/signup" /> : <Redirect to="/events" />
+            }
+          />
+          <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
+          <Route path="/events" component={AllEvents} />
+          <Route path="/events/:eventId" exact component={EventDetail} />
+          <Route path="/events/:eventId/edit" component={EventEdit} />
+          <Route path="/new-event" component={NewEvent} />
+          <Route path="/profile" component={Profile} />
+          <Route path="*" component={NotFound} />
         </Switch>
       </Layout>
     </Fragment>

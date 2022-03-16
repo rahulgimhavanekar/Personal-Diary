@@ -6,7 +6,7 @@ import {
   DELETE_EVENT,
   LOADING,
   ERROR,
-} from "../actions/eventActionTypes";
+} from "../actions/actionTypes";
 
 const intialState = {
   events: [],

@@ -9,7 +9,7 @@ const HighLightedEvent = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const history = useHistory();
-  const event = useSelector((state) => state.event);
+  const event = useSelector((state) => state.event.event);
 
   useEffect(() => {
     dispatch(getSingleEvent(params.eventId));

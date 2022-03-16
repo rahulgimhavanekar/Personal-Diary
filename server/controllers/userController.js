@@ -99,6 +99,7 @@ const updateUser = async (req, res) => {
     res.status(500).json({
       error: "Something went wrong Please try again later!",
     });
+    console.log(error);
   }
 };
 
