@@ -1,5 +1,5 @@
 .card {
-  width: 50%;
+  width: 40%;
   margin: 1rem auto;
 }
 
@@ -7,6 +7,12 @@
   background-color: #c1d1d1;
   padding: 1.5rem;
   border-radius: 4px;
+}
+
+.form p {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  text-align: center;
 }
 
 .control {
@@ -19,14 +25,12 @@
 }
 
 .control label,
-.control input,
-.control textarea {
+.control input {
   margin-bottom: 8px;
   border-radius: 4px;
 }
 
-.control input,
-.control textarea {
+.control input {
   font: inherit;
   padding: 0.35rem;
   border-radius: 4px;
@@ -37,8 +41,7 @@
   font-size: 1.25rem;
 }
 
-.control input:focus,
-.control textarea:focus {
+.control input:focus {
   outline-color: #393e46;
 }
 
@@ -52,9 +55,9 @@
   background-color: #393e46;
   color: #eeeeee;
   font: inherit;
-  font-size: 1rem;
+  margin-top: 16px;
+  font-size: 1.25rem;
   padding: 8px 24px;
-  margin-left: 8px;
   border-radius: 4px;
   outline: none;
   border: none;

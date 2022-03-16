@@ -12,9 +12,9 @@ const {
 
 router.post("/users/signup", signUp);
 router.post("/users/login", login);
+router.post("/users/logout", auth, logout);
 router.get("/users/me", auth, getProfile);
 router.patch("/users/me/edit", auth, updateUser);
 router.delete("/users/me", auth, deleteUser);
-router.post("/users/logout", auth, logout);
 
 module.exports = router;

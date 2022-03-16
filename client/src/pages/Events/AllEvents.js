@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import EventList from "../components/Events/EventList";
-import { getEvents } from "../actions/eventActions";
-import NoEventFound from "../components/Events/NoEventFound";
+import EventList from "../../components/Events/EventList";
+import { getEvents } from "../../actions/eventActions";
+import NoEventFound from "../../components/Events/NoEventFound";
 
 const AllEvents = () => {
   const dispatch = useDispatch();

@@ -23,14 +23,14 @@ app.listen(port, () => {
   console.log(`Server started at port ${port}`);
 });
 
-// const password = "Rahul123@";
+// const Event = require("./models/event");
+// const User = require("./models/user");
 
-// async function hp(pwd) {
-//   const hashedPassword = await bcrypt.hash(pwd, 8);
-//   console.log(hashedPassword);
+// const main = async () => {
+//   const user = await User.findById("6231c5047b31ad3830114c5a").populate(
+//     "events"
+//   );
+//   console.log(user.events);
+// };
 
-//   const isMatch = await bcrypt.compare("rahul123@", hashedPassword);
-//   console.log(isMatch);
-// }
-
-// hp(password);
+// main();

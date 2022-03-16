@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const auth = require("../middleware/auth");
 const {
   getEvents,
   createEvent,
@@ -8,10 +9,10 @@ const {
   deleteEvent,
 } = require("../controllers/eventController");
 
-router.get("/events", getEvents);
-router.get("/events/:id", getEventById);
-router.post("/new-event", createEvent);
-router.patch("/events/:id/edit9", updateEvent);
-router.delete("/events/:id", deleteEvent);
+router.post("/new-event", auth, createEvent);
+router.get("/events", auth, getEvents);
+router.get("/events/:id", auth, getEventById);
+router.patch("/events/:id/edit", auth, updateEvent);
+router.delete("/events/:id", auth, deleteEvent);
 
 module.exports = router;

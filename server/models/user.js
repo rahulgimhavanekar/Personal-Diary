@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const Event = require("./event");
 
 const userSchema = mongoose.Schema({
   name: {
@@ -29,6 +30,12 @@ const userSchema = mongoose.Schema({
       },
     },
   ],
+});
+
+userSchema.virtual("events", {
+  ref: "Event",
+  localField: "_id",
+  foreignField: "owner",
 });
 
 userSchema.methods.toJSON = function () {
@@ -66,6 +73,13 @@ userSchema.pre("save", async function (next) {
   }
 
   next();
+});
+
+//Delete User events when user is deleted
+userSchema.pre("remove", async function (next) {
+  const user = this;
+
+  await Event.deleteMany({ owner: user._id });
 });
 
 const User = mongoose.model("User", userSchema);

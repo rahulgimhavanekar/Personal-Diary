@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-import HighLightedEvent from "../components/Events/HighLightedEvent";
+import HighLightedEvent from "../../components/Events/HighLightedEvent";
 
 const EventDetail = () => {
   return (

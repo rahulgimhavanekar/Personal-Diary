@@ -9,10 +9,22 @@ const MainNavigation = () => {
       <nav className={classes.nav}>
         <ul>
           <li>
+            <Link to="/signup">Sign Up</Link>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/events">All Events</Link>
+          </li>
+          <li>
             <Link to="/events">All Events</Link>
           </li>
           <li>
             <Link to="/new-event">Add Event</Link>
+          </li>
+          <li>
+            <Link to="/profile">Profile</Link>
           </li>
         </ul>
       </nav>

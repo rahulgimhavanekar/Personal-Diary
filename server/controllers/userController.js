@@ -3,16 +3,16 @@ const bcrypt = require("bcrypt");
 
 const signUp = async (req, res) => {
   const email = req.body.email;
-  const user = await User.findOne({ email: email });
+  const existingUser = await User.findOne({ email: email });
 
-  if (user) {
+  if (existingUser) {
     return res.status(409).json({
       message: "Account already exists",
     });
   }
 
+  const user = new User(req.body);
   try {
-    const user = new User(req.body);
     await user.save();
     const token = await user.generateAuthToken();
     res.status(201).json({
@@ -25,12 +25,6 @@ const signUp = async (req, res) => {
       error: "Something went wrong Please try again later!",
     });
   }
-};
-
-const getProfile = async (req, res) => {
-  res.status(200).json({
-    data: req.user,
-  });
 };
 
 const login = async (req, res) => {
@@ -82,6 +76,12 @@ const logout = async (req, res) => {
       error: "Something went wrong Please try again later!",
     });
   }
+};
+
+const getProfile = async (req, res) => {
+  res.status(200).json({
+    data: req.user,
+  });
 };
 
 const updateUser = async (req, res) => {
