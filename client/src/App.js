@@ -1,37 +1,30 @@
 import { Fragment } from "react";
-import Layout from "./components/Layout/Layout";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
+import AuthPage from "./pages/Auth/AuthPage";
 import AllEvents from "./pages/Events/AllEvents";
 import NewEvent from "./pages/Events/NewEvent";
 import EventDetail from "./pages/Events/EventDetail";
 import NotFound from "./pages/NotFound";
 import EventEdit from "./components/Events/EventEdit";
-import Signup from "./pages/Auth/Signup";
-import Login from "./pages/Auth/Login";
-import Profile from "./pages/Auth/Profile";
-import { useSelector } from "react-redux";
+import Layout from "./components/Layout/Layout";
+
+import PrivateRoute from "./components/Navigation/PrivateRoute";
 
 function App() {
-  const loggedIn = useSelector((state) => state.auth.loggedIn);
-
   return (
     <Fragment>
       <Layout>
         <Switch>
-          <Route
-            path="/"
+          <Route exact path="/" component={() => <Redirect to="/events" />} />
+          <PrivateRoute exact path="/events" component={AllEvents} />
+          <PrivateRoute exact path="/events/:eventId" component={EventDetail} />
+          <PrivateRoute
             exact
-            component={() =>
-              !loggedIn ? <Redirect to="/signup" /> : <Redirect to="/events" />
-            }
+            path="/events/:eventId/edit"
+            component={EventEdit}
           />
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
-          <Route path="/events" component={AllEvents} />
-          <Route path="/events/:eventId" exact component={EventDetail} />
-          <Route path="/events/:eventId/edit" component={EventEdit} />
-          <Route path="/new-event" component={NewEvent} />
-          <Route path="/profile" component={Profile} />
+          <PrivateRoute exact path="/new-event" component={NewEvent} />
+          <Route exact path="/auth" component={AuthPage} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Layout>
@@ -40,3 +33,22 @@ function App() {
 }
 
 export default App;
+
+/* <Route exact path="/" component={() => <Redirect to="/events" />} />
+          <Route exact path="/auth" component={AuthPage} />
+          <PrivateRoute exact path="/events" component={AllEvents} />
+          <PrivateRoute exact path="/events/:eventId" component={EventDetail} />
+          <PrivateRoute
+            exact
+            path="/events/:eventId/edit"
+            component={EventEdit}
+          />
+          <PrivateRoute exact path="/new-event" component={NewEvent} />
+          <Route path="*" component={NotFound} /> */
+
+/* <PrivateRoute>
+            <Route exact path="/events" component={AllEvents} />
+            <Route exact path="/events/:eventId" component={EventDetail} />
+            <Route exact path="/events/:eventId/edit" component={EventEdit} />
+            <Route exact path="/new-event" component={NewEvent} />
+          </PrivateRoute> */

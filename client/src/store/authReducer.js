@@ -1,13 +1,16 @@
 import {
   LOGIN_FAILURE,
   LOGIN_SUCCESS,
-  SIGNOUT,
+  LOGOUT,
   SIGNUP_FAILURE,
   SIGNUP_SUCCESS,
+  PROFILE,
 } from "../actions/actionTypes";
 
+const token = localStorage.getItem("token");
+
 const initialState = {
-  loggedIn: false,
+  loggedIn: token ? true : false,
   user: {},
   authMessage: null,
 };
@@ -16,6 +19,7 @@ const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
       return {
+        ...state,
         loggedIn: true,
         user: action.payload.user,
         authMessage: action.payload.message,
@@ -27,6 +31,7 @@ const authReducer = (state = initialState, action) => {
       };
     case SIGNUP_SUCCESS:
       return {
+        ...state,
         loggedIn: true,
         user: action.payload.user,
         authMessage: action.payload.message,
@@ -36,7 +41,9 @@ const authReducer = (state = initialState, action) => {
         ...state,
         authMessage: action.payload.message,
       };
-    case SIGNOUT: {
+    case LOGOUT: {
+      localStorage.clear();
+
       return {
         ...state,
         loggedIn: false,

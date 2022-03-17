@@ -1,23 +1,42 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useCallback, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { LOGOUT } from "../../actions/actionTypes";
+import decode from "jwt-decode";
 import classes from "./MainNavigation.module.css";
 
 const MainNavigation = () => {
-  const loggedIn = useSelector((state) => state.auth.loggedIn);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const existingToken = localStorage.getItem("token");
+
+  const logout = useCallback(() => {
+    dispatch({ type: LOGOUT });
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (existingToken) {
+      const decodedToken = decode(existingToken);
+
+      if (decodedToken.exp * 1000 < new Date().getTime()) {
+        logout();
+      }
+    }
+
+    history.push("/auth");
+  }, [history, existingToken, logout]);
 
   return (
     <header className={classes.header}>
       <div className={classes.logo}>Diary</div>
       <nav className={classes.nav}>
         <ul>
-          {!loggedIn ? (
+          {!existingToken ? (
             <>
               <li>
-                <Link to="/signup">Sign Up</Link>
-              </li>
-              <li>
-                <Link to="/login">Login</Link>
+                <Link to="/auth">Authenticate</Link>
               </li>
             </>
           ) : (
@@ -29,7 +48,9 @@ const MainNavigation = () => {
                 <Link to="/new-event">Add Event</Link>
               </li>
               <li>
-                <Link to="/profile">Profile</Link>
+                <Link onClick={logout} to="/#">
+                  Logout
+                </Link>
               </li>
             </>
           )}

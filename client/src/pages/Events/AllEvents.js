@@ -6,11 +6,12 @@ import NoEventFound from "../../components/Events/NoEventFound";
 
 const AllEvents = () => {
   const dispatch = useDispatch();
-  const events = useSelector((state) => state.event.events);
 
   useEffect(() => {
     dispatch(getEvents());
   }, [dispatch]);
+
+  const events = useSelector((state) => state.event.events);
 
   if (!events.length) {
     return <NoEventFound />;

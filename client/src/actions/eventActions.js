@@ -40,6 +40,7 @@ export const createEvent = (event) => {
 export const deleteEvent = (id) => {
   return async (dispatch) => {
     try {
+      dispatch({ type: LOADING });
       await axios.delete(`http://localhost:5000/api/events/${id}`);
       dispatch({ type: DELETE_EVENT, payload: id });
     } catch (error) {
@@ -51,6 +52,7 @@ export const deleteEvent = (id) => {
 export const updateEvent = (id, newEvent) => {
   return async (dispatch) => {
     try {
+      dispatch({ type: LOADING });
       const response = axios.patch(
         `http://localhost:5000/api/events/${id}/edit`,
         newEvent
@@ -66,6 +68,7 @@ export const updateEvent = (id, newEvent) => {
 export const getSingleEvent = (id) => {
   return async (dispatch) => {
     try {
+      dispatch({ type: LOADING });
       const response = await axios.get(
         `http://localhost:5000/api/events/${id}`
       );
