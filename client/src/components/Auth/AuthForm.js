@@ -32,7 +32,7 @@ const LoginForm = () => {
       };
       console.log(name, email, password);
 
-      dispatch(signup(userCredentials));
+      dispatch(signup(userCredentials, history));
     } else {
       const userCredentials = {
         email: email,
@@ -40,15 +40,12 @@ const LoginForm = () => {
       };
       console.log(email, password);
 
-      dispatch(login(userCredentials));
+      dispatch(login(userCredentials, history));
     }
 
     setName("");
     setEmail("");
     setPassword("");
-
-    // window.location.pathname("/");
-    history.push("/events");
   };
 
   return (
