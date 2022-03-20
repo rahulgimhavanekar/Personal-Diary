@@ -89,7 +89,7 @@ const LoginForm = () => {
           <p className={classes.signup} onClick={switchModeHandler}>
             {isSigningUp
               ? "Already Have an account? Login"
-              : "Don't have and account? Sign up"}
+              : "Don't have an account? Sign up"}
           </p>
         </div>
       </form>

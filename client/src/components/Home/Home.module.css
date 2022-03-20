@@ -1,0 +1,21 @@
+.main {
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  line-height: 1.5;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+}
+
+.click_here:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
