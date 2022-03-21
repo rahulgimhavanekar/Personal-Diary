@@ -5,12 +5,12 @@ Reactjs
 Nodejs
 
 # Build Project
-cd Personal-Diary/cd client
-npm install
+cd Personal-Diary/cd client \n
+npm install \n
 npm start
 
 #open new terminal
 
-cd Personal-Diary/cd server
-npm install 
+cd Personal-Diary/cd server \n
+npm install \n
 npm start
