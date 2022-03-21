@@ -13,6 +13,6 @@ The project is created using Reactjs, Nodejs, Expressjs and Mongodb. It also has
 
 #open new terminal
 
-- cd Personal-Diary/cd server \n
+- cd Personal-Diary/cd server
 - ```npm install```
 - ```npm start```
