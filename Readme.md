@@ -1,16 +1,18 @@
 # Personal Diary app with MERN stack
 
-# Requirements
-Reactjs
-Nodejs
+The project is created using Reactjs, Nodejs, Expressjs and Mongodb. It also has authentication.
 
-# Build Project
-cd Personal-Diary/cd client \n
-npm install \n
-npm start
+## Requirements
+- Reactjs
+- Nodejs
+
+## Installation
+- cd Personal-Diary/cd client
+- ```npm install```
+- ```npm start```
 
 #open new terminal
 
-cd Personal-Diary/cd server \n
-npm install \n
-npm start
+- cd Personal-Diary/cd server \n
+- ```npm install```
+- ```npm start```
