@@ -1,7 +1,8 @@
 import { Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
 import HomePage from "./pages/Home/HomePage";
-import AuthPage from "./pages/Auth/AuthPage";
+import LoginPage from "./pages/Auth/LoginPage";
+import SingupPage from "./pages/Auth/SignupPage";
 import AllEvents from "./pages/Events/AllEvents";
 import NewEvent from "./pages/Events/NewEvent";
 import EventDetail from "./pages/Events/EventDetail";
@@ -17,7 +18,8 @@ function App() {
       <Layout>
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/auth" component={AuthPage} />
+          <Route exact path="/signup" component={SingupPage} />
+          <Route exact path="/login" component={LoginPage} />
           <PrivateRoute exact path="/events" component={AllEvents} />
           <PrivateRoute exact path="/events/:eventId" component={EventDetail} />
           <PrivateRoute

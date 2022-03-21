@@ -6,7 +6,7 @@ const Home = () => {
   const history = useHistory();
 
   const clickHandler = () => {
-    history.push("/auth");
+    history.push("/signup");
   };
 
   return (
@@ -16,12 +16,9 @@ const Home = () => {
         A place where you can save your personal events or memories just like
         writing a personal diary.
       </p>
-      <p className={classes.subtitle}>
-        <span className={classes.click_here} onClick={clickHandler}>
-          Click here
-        </span>{" "}
-        to signup or login
-      </p>
+      <div className={classes.actions}>
+        <button onClick={clickHandler}>Get Started</button>
+      </div>
     </div>
   );
 };

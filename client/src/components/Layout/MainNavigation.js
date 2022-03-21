@@ -36,7 +36,10 @@ const MainNavigation = () => {
           {!isLoggedIn ? (
             <>
               <li>
-                <Link to="/auth">Login</Link>
+                <Link to="/signup">Signup</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
               </li>
             </>
           ) : (

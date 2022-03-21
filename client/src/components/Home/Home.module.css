@@ -15,7 +15,26 @@
   font-size: 1.25rem;
 }
 
-.click_here:hover {
-  text-decoration: underline;
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.actions button {
+  background-color: #393e46;
+  color: #eeeeee;
+  font: inherit;
+  margin-top: 16px;
+  font-size: 1.25rem;
+  padding: 8px 24px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
   cursor: pointer;
+}
+
+.actions button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
