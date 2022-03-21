@@ -4,7 +4,6 @@ import {
   LOGOUT,
   SIGNUP_FAILURE,
   SIGNUP_SUCCESS,
-  // PROFILE,
 } from "../actions/actionTypes";
 
 const token = localStorage.getItem("token");

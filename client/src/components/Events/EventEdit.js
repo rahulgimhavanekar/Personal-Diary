@@ -22,6 +22,10 @@ const EventEdit = () => {
     setIsEnteringForm(false);
   };
 
+  const onCancelHandler = () => {
+    history.push("/events");
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -71,7 +75,10 @@ const EventEdit = () => {
             ></textarea>
           </div>
           <div className={classes.actions}>
-            <button onClick={finishedEnteringHandler}>Update</button>
+            <button onClick={finishedEnteringHandler} type="submit">
+              Update
+            </button>
+            <button onClick={onCancelHandler}>Cancel</button>
           </div>
         </form>
       </div>

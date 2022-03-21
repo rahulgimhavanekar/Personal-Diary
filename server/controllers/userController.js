@@ -78,49 +78,8 @@ const logout = async (req, res) => {
   }
 };
 
-const getProfile = async (req, res) => {
-  res.status(200).json({
-    data: req.user,
-  });
-};
-
-const updateUser = async (req, res) => {
-  const updates = Object.keys(req.body);
-
-  try {
-    updates.forEach((update) => (req.user[update] = req.body[update]));
-
-    await req.user.save();
-    res.status(200).json({
-      success: true,
-      data: req.user,
-    });
-  } catch (error) {
-    res.status(500).json({
-      error: "Something went wrong Please try again later!",
-    });
-    console.log(error);
-  }
-};
-
-const deleteUser = async (req, res) => {
-  try {
-    await req.user.remove();
-    res.status(200).json({
-      data: req.user,
-    });
-  } catch (error) {
-    res.status(500).json({
-      error: "Something went wrong Please try again later!",
-    });
-  }
-};
-
 module.exports = {
   signUp,
-  getProfile,
   login,
-  updateUser,
-  deleteUser,
   logout,
 };
