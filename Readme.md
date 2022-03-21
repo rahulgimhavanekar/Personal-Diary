@@ -4,7 +4,7 @@
 Reactjs
 Nodejs
 
-#Build Project
+# Build Project
 cd Personal-Diary/cd client
 npm install
 npm start
