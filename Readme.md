@@ -1,1 +1,3 @@
-# Personal Diary CRUD app
+# Personal Diary app with MERN stack
+
+
