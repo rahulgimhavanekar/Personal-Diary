@@ -21,20 +21,3 @@ const AllEvents = () => {
 };
 
 export default AllEvents;
-
-// const DUMMY_EVENTS = [
-//   {
-//     id: 1,
-//     title: "My First Job",
-//     description:
-//       "Got my First Job today. I can't tell you how excited i am for this. I feel like it's a new start for me and I am going to make myself proud.",
-//     date: "20th June 2022",
-//   },
-//   {
-//     id: 2,
-//     title: "Drove car for first time",
-//     description:
-//       "Today I drove a car for the first time. Rahul needed some help to as he is moving to new place. So he needed someone to drive for him since he can't drive for atleast 2 weeks.",
-//     date: "20th June 2022",
-//   },
-// ];
