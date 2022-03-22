@@ -25,6 +25,28 @@ npm start
 
 ## Features
 
+- Home Page
+
+![](images/home.jpg)
+
 - Create account or Login
 
 ![](images/signup.jpg)
+
+![](images/login.jpg)
+
+- Add Event
+
+![](images/add_event.jpg)
+
+- View Event
+
+![](images/view_event.jpg)
+
+- View All events
+
+![](images/all_events.jpg)
+
+- Edit Event
+
+![](images/edit_event.jpg)
