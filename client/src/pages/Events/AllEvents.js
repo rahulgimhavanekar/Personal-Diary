@@ -11,10 +11,15 @@ const AllEvents = () => {
     dispatch(getEvents());
   }, [dispatch]);
 
+  const isLoading = useSelector((state) => state.event.loading);
   const events = useSelector((state) => state.event.events);
 
   if (!events.length) {
     return <NoEventFound />;
+  }
+
+  if (isLoading) {
+    return <p>Loading...</p>;
   }
 
   return <EventList events={events} />;

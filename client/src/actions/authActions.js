@@ -35,8 +35,10 @@ export const signup = (credentials, router) => {
 
       router.push("/events");
     } catch (error) {
-      dispatch({ type: SIGNUP_FAILURE, payload: error.message });
-      console.log(error);
+      if (error.response) {
+        alert(error.response.data.message);
+      }
+      dispatch({ type: SIGNUP_FAILURE, payload: error.response.data.message });
     }
   };
 };
@@ -58,8 +60,10 @@ export const login = (credentials, router) => {
       });
       router.push("/events");
     } catch (error) {
-      dispatch({ type: LOGIN_FAILURE, payload: error.message });
-      console.log(error);
+      if (error.response) {
+        alert(error.response.data.message);
+      }
+      dispatch({ type: LOGIN_FAILURE, payload: error.response.data.message });
     }
   };
 };
